@@ -2,6 +2,7 @@ import { ALL_BUTTON_CONFIG } from "./buttonConfig";
 import { UnifiedButtonType } from "./buttonTypes";
 import ChevronRight from "@/assets/chevron-right.svg";
 import Image from "next/image";
+import { Team, AI } from "./buttonTypes";
 
 interface ButtonProps {
   type: UnifiedButtonType;
@@ -22,14 +23,18 @@ export default function Button({
     ? config.bgActive ?? "" // bgActive가 없으면 빈 문자열
     : config.bgInactive ?? "";
 
+  const TEAM_TYPES: Team[] = ["team", "teamGray400"];//if문을 줄이자
+  const AI_TYPES: AI[] = ["AI", "AIStart", "AISecond"];
+
   //부모 컴포넌트에 text가 없다면 config.text로 가자
   let displayText = text ?? config.text ?? type;
 
-  if (type === "team" || type === "teamGray400") {
+  if (TEAM_TYPES.includes(type as Team)) {
+    //팀 타입 관련 if문
     displayText = `${displayText}`;
   }
 
-  if (type === "AI" || type === "AIStart" || type === "AISecond") {
+  if (AI_TYPES.includes(type as AI)) {
     return (
       <div className={`bg-gray-900 rounded-lg`}>
         <div
