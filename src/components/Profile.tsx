@@ -1,32 +1,45 @@
 "use client";
-import { forwardRef, ButtonHTMLAttributes, ReactNode } from "react";
+import { forwardRef, ButtonHTMLAttributes, useState } from "react";
 import Image, { StaticImageData } from "next/image";
 
 interface ProfileProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   profileImage?: string | StaticImageData;
   name: string;
-  isActive?: boolean;
   className?: string;
 }
 
 export const Profile = forwardRef<HTMLButtonElement, ProfileProps>(
-  ({ profileImage, name, isActive = false, className = "", ...rest }, ref) => {
-    const baseStyle = "w-[142px] h-[50px] flex items-center  transition-colors";
+  ({ profileImage, name, className = "", ...rest }, ref) => {
+    const [isActive, setIsActive] = useState(false);
+
+    const baseStyle =
+      "w-[120px] h-[42px] sm:w-[142px] sm:h-[50px] flex items-center transition-colors rounded-[8px]";
 
     const variantStyle = isActive ? "bg-gray-900" : "bg-black";
 
-    const contentStyle = "w-[118px] h-8 flex items-center gap-[30px] ml-3";
+    const contentStyle =
+      "w-[100px] h-7 sm:w-[118px] sm:h-8 flex items-center gap-4 sm:gap-[30px] ml-2 sm:ml-3";
+
+    const imageStyle =
+      "w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white overflow-hidden flex-shrink-0";
+
+    const nameStyle =
+      "text-gray-400 text-sm sm:text-LBody-M leading-[22px] sm:leading-[26px] whitespace-nowrap";
+
+    const handleClick = () => {
+      setIsActive((prev) => !prev);
+    };
 
     return (
       <button
         ref={ref}
         type="button"
+        onClick={handleClick}
         className={`${baseStyle} ${variantStyle} ${className}`}
         {...rest}
       >
         <div className={contentStyle}>
-          {/* 프로필 이미지 */}
-          <div className="w-8 h-8 rounded-full bg-white overflow-hidden flex-shrink-0">
+          <div className={imageStyle}>
             {profileImage && (
               <Image
                 src={profileImage}
@@ -37,11 +50,7 @@ export const Profile = forwardRef<HTMLButtonElement, ProfileProps>(
               />
             )}
           </div>
-
-          {/* 이름 */}
-          <span className="text-gray-400 text-LBody-M leading-[26px] whitespace-nowrap">
-            {name}
-          </span>
+          <span className={nameStyle}>{name}</span>
         </div>
       </button>
     );
