@@ -12,7 +12,7 @@ export default function Day() {
   return (
     <button
       onClick={handleClick}
-      className={`w-[28px] h-[28px] rounded-full flex items-center justify-center text-white text-LBody-M ${
+      className={`w-7 h-7 rounded-full flex items-center justify-center text-white text-LBody-M ${
         isActive ? "bg-primary-500" : "bg-primary-600"
       }`}
     >
