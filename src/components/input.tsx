@@ -5,8 +5,7 @@ import Image from "next/image";
 import EyeOff from "@/assets/eye-off.svg";
 import EyeOpen from "@/assets/eye-open.svg";
 
-/* 로그인, 회원가입 인풋은 그냥 right icon 쓰면되고, 모달 input? 그 작은건 오른쪽, 왼쪽 아이콘 
-필요할 때마다 불러서 쓰기, 더 tailwind 쓰고 싶음 className사용해서 쓰기
+/* 로그인, 회원가입 인풋은 그냥 right icon 쓰면되고, 모달 input? 그 작은건 오른쪽, 왼쪽 아이콘 필요할 떄마다 불러서 쓰기, 떠 tailwind 쓰고 싶음 className사용해서 쓰기
 label, varient, type, placeholder, leftIcon, rightIcon, className있음 */
 
 type Variant = "default" | "channel";
@@ -41,9 +40,9 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 
     const variantStyle = {
       default:
-        "w-[800px] h-[81px] border-gray-800 bg-gray-900 text-Title-M placeholder:text-Title-M placeholder:text-gray-500 px-8",
+        "w-full sm:max-w-[400px] md:max-w-[600px] lg:max-w-[800px] h-[81px] border-gray-800 bg-gray-900 text-Title-M placeholder:text-Title-M placeholder:text-gray-500 px-8",
       channel:
-        "w-[523px] h-[53px] border-[#404040] bg-[#404040] text-sTitle-M placeholder:text-sTitle-M placeholder:text-gray-400 px-[24px]",
+        "w-full sm:max-w-[280px] md:max-w-[400px] lg:max-w-[523px] h-[53px] border-[#404040] bg-gray-700 text-sTitle-M placeholder:text-sTitle-M placeholder:text-gray-400 px-[24px]",
     };
 
     // 모달 작은 input 아이콘 유무에 따라 패딩ㅠ
