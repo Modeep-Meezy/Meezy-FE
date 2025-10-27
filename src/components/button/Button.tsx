@@ -3,6 +3,8 @@ import { UnifiedButtonType } from "./buttonTypes";
 import ChevronRight from "@/assets/chevron-right.svg";
 import Image from "next/image";
 import { Team, AI } from "./buttonTypes";
+import { classNames } from "@/utils/classNames";
+import AIButton from "./AIButton";
 
 interface ButtonProps {
   type: UnifiedButtonType;
@@ -23,7 +25,7 @@ export default function Button({
     ? config.bgActive ?? "" // bgActive가 없으면 빈 문자열
     : config.bgInactive ?? "";
 
-  const TEAM_TYPES: Team[] = ["team", "teamGray400"];//if문을 줄이자
+  const TEAM_TYPES: Team[] = ["team", "teamGray400"]; //if문을 줄이자
   const AI_TYPES: AI[] = ["AI", "AIStart", "AISecond"];
 
   //부모 컴포넌트에 text가 없다면 config.text로 가자
@@ -36,42 +38,27 @@ export default function Button({
 
   if (AI_TYPES.includes(type as AI)) {
     return (
-      <div className={`bg-gray-900 rounded-lg`}>
-        <div
-          className={`flex justify-around items-center text-gray-400 border-b-2 border-gray-800 text-label-B`}
-        >
-          AI 도우미 - 리시브
-          <div className={`flex items-center`}>
-            <div>0:25</div>
-            <div className="ml-2 flex items-center justify-center w-6 h-6 rounded-full bg-system-800 text-white text-sm font-bold"></div>
-          </div>
-        </div>
-        <button
-          onClick={onClick}
-          className={` ${config.font}
-        ${config.fontColor}
-        ${config.size}
-        ${config.rounded}
-        ${config.border || ""}
-        ${bgClass}`}
-        >
-          {displayText ?? type}
-        </button>
-      </div>
+      <AIButton
+        type={type}
+        isActive={isActive}
+        onClick={onClick}
+        text={displayText}
+      />
     );
   }
 
   return (
     <button
       onClick={onClick}
-      className={`
-        ${config.font}
-        ${config.fontColor}
-        ${config.size}
-        ${config.rounded}
-        ${config.border || ""}
-        ${bgClass}
-        flex items-center justify-around`}
+      className={classNames(
+        config.font,
+        config.fontColor,
+        config.size,
+        config.rounded,
+        config.border,
+        bgClass,
+        "flex items-center justify-around"
+      )}
     >
       <span>{displayText ?? type}</span>
       {(type === "team" || type === "teamGray400") && (
