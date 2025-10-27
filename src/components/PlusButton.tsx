@@ -16,7 +16,7 @@ interface PlusButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 export const PlusButton = forwardRef<HTMLButtonElement, PlusButtonProps>(
   ({ variant = "dark", className = "", ...rest }, ref) => {
     const baseStyle =
-      "w-16 h-16 rounded-[8px] flex items-center justify-center";
+      "w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 rounded-[8px] flex items-center justify-center";
 
     const variantStyle = {
       dark: "bg-gray-800",
