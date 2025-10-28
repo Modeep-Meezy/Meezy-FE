@@ -1,4 +1,4 @@
-import { classNames } from "@/utils/classNames";
+import { classNames } from "@/lib/classNames";
 import { ALL_BUTTON_CONFIG } from "./buttonConfig";
 import { UnifiedButtonType } from "./buttonTypes";
 

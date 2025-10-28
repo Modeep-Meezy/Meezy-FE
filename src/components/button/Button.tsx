@@ -3,7 +3,7 @@ import { UnifiedButtonType } from "./buttonTypes";
 import ChevronRight from "@/assets/chevron-right.svg";
 import Image from "next/image";
 import { Team, AI } from "./buttonTypes";
-import { classNames } from "@/utils/classNames";
+import { classNames } from "@/lib/classNames";
 import AIButton from "./AIButton";
 
 interface ButtonProps {
