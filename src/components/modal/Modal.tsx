@@ -6,11 +6,7 @@ import Del from "@/assets/del.svg";
 import CreateModal from "./CreateModal";
 import JoinModal from "./JoinModal";
 
-import Line from "@/assets/line.svg";
-import Button from "../button/Button";
-import { Input } from "../input";
-
-export default function ServerCreateModal() {
+export default function Modal() {
   const [create, setCreate] = useState(true);
 
   const handleClose = () => {
