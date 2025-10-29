@@ -1,10 +1,8 @@
 "use client";
-import { forwardRef, InputHTMLAttributes, ReactNode } from "react";
-import { useState } from "react";
+import { forwardRef, InputHTMLAttributes, ReactNode, useState } from "react";
 import Image from "next/image";
 import EyeOff from "@/assets/eye-off.svg";
 import EyeOpen from "@/assets/eye-open.svg";
-
 /* 로그인, 회원가입 인풋은 그냥 right icon 쓰면되고, 모달 input? 그 작은건 오른쪽, 왼쪽 아이콘 필요할 떄마다 불러서 쓰기, 떠 tailwind 쓰고 싶음 className사용해서 쓰기
 label, varient, type, placeholder, leftIcon, rightIcon, className있음 */
 
@@ -44,41 +42,39 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
       channel:
         "w-full sm:max-w-[280px] md:max-w-[400px] lg:max-w-[523px] h-[53px] border-[#404040] bg-gray-700 text-sTitle-M placeholder:text-sTitle-M placeholder:text-gray-400 px-[24px]",
     };
-
     // 모달 작은 input 아이콘 유무에 따라 패딩ㅠ
-    const movingcPadding = `
+    const movingPadding = `
       ${leftIcon ? "pl-[52px]" : ""}
       ${rightIcon ? "pr-[52px]" : ""}
     `;
 
     return (
-      <div
-        className={`flex flex-col gap-[10px] ${
-          variant === "channel" ? "w-[523px]" : "w-[800px]"
-        } relative ${className}`}
-      >
+      <div className={`flex flex-col gap-[10px] w-full relative ${className}`}>
         {/* 라벨(label) */}
         {label && (
           <label className="text-sTitle-M text-gray-400 leading-[100%] align-middle">
             {label}
           </label>
         )}
-        {/* 왼쪽 아이콘(Icon) */}
-        <div className="relative flex items-center">
+
+        {/* 인풋(wrapper) */}
+        <div className="relative flex items-center w-full">
+          {/* 왼쪽 아이콘 */}
           {leftIcon && (
             <div className="absolute left-[20px] top-1/2 -translate-y-1/2">
               {leftIcon}
             </div>
           )}
-          {/* 인풋(input) */}
+
+          {/* 인풋 */}
           <input
             ref={ref}
             type={isPassword && showPassword ? "text" : type}
             {...rest}
-            className={`${baseStyle} ${variantStyle[variant]} ${movingcPadding}`}
+            className={`${baseStyle} ${variantStyle[variant]} ${movingPadding}`}
           />
 
-          {/* 오른쪽 아이콘(Icon) 필요할 때 */}
+          {/* 오른쪽 아이콘 필요할 떄*/}
           {rightIcon && (
             <div className="absolute right-[20px] top-1/2 -translate-y-1/2">
               {rightIcon}
@@ -94,7 +90,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
             >
               <Image
                 src={showPassword ? EyeOpen : EyeOff}
-                alt={showPassword ? "eye-off" : "eye-open"}
+                alt={showPassword ? "eye-open" : "eye-off"}
               />
             </button>
           )}
