@@ -3,11 +3,12 @@ import Line from "@/assets/line.svg";
 import Button from "../button/Button";
 import { Input } from "../input";
 
-interface CreateModalProps {
+interface ImgModalProps {
+  onBack?: () => void;
   onNext?: () => void;
 }
 
-export default function CreateModal({ onNext }: CreateModalProps) {
+export default function CreateModal({ onBack, onNext }: ImgModalProps) {
   const titleB = "text-Title-B text-white mb-2";
 
   return (
@@ -57,7 +58,7 @@ export default function CreateModal({ onNext }: CreateModalProps) {
       {/* 푸터 버튼 */}
       <div className="flex gap-4 p-6 pt-0">
         <Button type="buttonBorder" text="닫기" />
-        <Button type="button" text="다음" onClick={onNext} />
+        <Button type="button" text="다음" />
       </div>
     </>
   );
