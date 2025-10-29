@@ -53,7 +53,7 @@ export default function CreateModal() {
       {/* 푸터 버튼 */}
       <div className="flex gap-4 p-6 pt-0">
         <Button type="buttonBorder" text="닫기" />
-        <Button type="button" text="확인" />
+        <Button type="button" text="다음" />
       </div>
     </>
   );
