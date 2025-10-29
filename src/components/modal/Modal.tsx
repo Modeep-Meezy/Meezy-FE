@@ -58,7 +58,7 @@ export default function Modal() {
           </div>
           <button
             onClick={handleClose}
-            className="text-zinc-400 hover:text-white transition-colors"
+            className="text-zinc-400 hover:text-white transition-colors pr-3"
           >
             <Image src={Del} alt="delete icon" width={20} height={20} />
           </button>
