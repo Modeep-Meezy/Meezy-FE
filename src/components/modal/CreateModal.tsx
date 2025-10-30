@@ -2,6 +2,7 @@ import Image from "next/image";
 import Line from "@/assets/line.svg";
 import Button from "../button/Button";
 import { Input } from "../input";
+import { useServerModalStore } from "@/store/serverModalStore";
 
 interface CreateModalProps {
   onNext?: () => void;
@@ -9,6 +10,8 @@ interface CreateModalProps {
 
 export default function CreateModal({ onNext }: CreateModalProps) {
   const titleB = "text-Title-B text-white mb-2";
+  const { serverName, setServerName, serverImage, setServerImage } =
+    useServerModalStore();
 
   return (
     <>
@@ -26,7 +29,12 @@ export default function CreateModal({ onNext }: CreateModalProps) {
         <div className="w-full h-full mb-2 flex flex-col gap-5">
           <label>
             <span className="text-Body-B text-white">이름</span>
-            <Input variant="channel" placeholder="서버 이름" />
+            <Input
+              variant="channel"
+              placeholder="서버 이름"
+              value={serverName}
+              onChange={(e) => setServerName(e.target.value)}
+            />
           </label>
           <Image
             src={Line}
@@ -43,8 +51,19 @@ export default function CreateModal({ onNext }: CreateModalProps) {
             <br />
             최소 512 x 512 크기로 지정해주세요.
           </p>
-          <div className="w-1/2">
-            <Button type="ImgAdd" />
+          <div className="w-1/2 relative">
+            <input
+              id="serverImageUpload"
+              type="file"
+              accept="image/*"
+              className="hidden"
+              onChange={(e) =>
+                e.target.files?.[0] && setServerImage(e.target.files[0])
+              }
+            />
+            <label htmlFor="serverImageUpload">
+              <Button type="ImgAdd" />
+            </label>
           </div>
           <Image
             src={Line}
