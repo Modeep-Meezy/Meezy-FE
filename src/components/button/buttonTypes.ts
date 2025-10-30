@@ -7,6 +7,7 @@ export type ButtonConfigType = {
   rounded: string;
   border?: string;
   text?: string;
+  p?: string;
 };
 
 export type Login = "login";

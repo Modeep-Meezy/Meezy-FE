@@ -56,6 +56,7 @@ export default function Button({
         config.size,
         config.rounded,
         config.border,
+        config.p,
         bgClass,
         "flex items-center justify-around"
       )}
