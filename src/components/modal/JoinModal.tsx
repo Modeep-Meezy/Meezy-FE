@@ -6,7 +6,6 @@ import { Input } from "../input";
 
 export default function JoinModal() {
   const titleB = "text-Title-B text-white mb-2";
-
   return (
     <>
       {/* 콘텐츠 */}
@@ -28,7 +27,7 @@ export default function JoinModal() {
               leftIcon={
                 <Image src={Link} alt="copy icon" width={20} height={20} />
               }
-              placeholder="서버 이름"
+              placeholder="초대받은 링크를 입력"
             />
           </label>
           <Image
