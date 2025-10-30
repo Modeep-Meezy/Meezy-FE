@@ -51,7 +51,7 @@ export default function CreateModal({ onNext }: CreateModalProps) {
             <br />
             최소 512 x 512 크기로 지정해주세요.
           </p>
-          <div className="w-1/2 relative">
+          <div className="flex">
             <input
               id="serverImageUpload"
               type="file"
