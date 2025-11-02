@@ -48,7 +48,7 @@ export default function Button({
   }
 
   return (
-    <button
+    <div
       onClick={onClick}
       className={classNames(
         config.font,
@@ -65,6 +65,6 @@ export default function Button({
       {(type === "team" || type === "teamGray400") && (
         <Image src={ChevronRight} alt="chevron" />
       )}
-    </button>
+    </div>
   );
 }
