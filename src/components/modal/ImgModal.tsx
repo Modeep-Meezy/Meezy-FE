@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Line from "@/assets/line.svg";
 import Button from "../button/Button";
-import { Input } from "../input";
 import { useServerModalStore } from "@/store/serverModalStore";
 
 interface ImgModalProps {

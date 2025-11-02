@@ -3,8 +3,8 @@
 import { useState } from "react";
 import Image from "next/image";
 import Del from "@/assets/del.svg";
-import CreateModal from "./CreateModal";
-import JoinModal from "./JoinModal";
+import CreateModal from "./CreateServerModal";
+import JoinModal from "./JoinServerModal";
 
 export default function Modal() {
   const [create, setCreate] = useState(true);
