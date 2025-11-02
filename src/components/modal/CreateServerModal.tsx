@@ -10,7 +10,7 @@ interface CreateModalProps {
 
 export default function CreateModal({ onNext }: CreateModalProps) {
   const titleB = "text-Title-B text-white mb-2";
-  const { serverName, setServerName, serverImage, setServerImage } =
+  const { serverName, setServerName, setServerImage } =
     useServerModalStore();
 
   return (
